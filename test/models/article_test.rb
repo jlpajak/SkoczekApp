@@ -35,4 +35,5 @@ class ArticleTest < ActiveSupport::TestCase
     @article.description = "a" * 501
     assert_not @article.valid?
   end
+  
 end

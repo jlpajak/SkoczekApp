@@ -1,0 +1,22 @@
+<%= render 'shared/page_title', title: @article.name %>
+
+<div class="well col-md-8 col-md-offset-2">
+  <h4 class="center description"><strong>Tekst: </strong></h4>
+  <hr />
+  <%= simple_format(@article.description) %>
+  <hr />
+  <div class="pull-right">
+    <p class="center">
+      <em>Created by:</em>
+    </p>
+    <p class="center">
+      <%= link_to gravatar_for(@article.player), articles_path %>
+    </p>
+    <p class="center">
+      <small><%= @article.player.playername %></small>
+      <div class="pull-right">
+        <%= time_ago_in_words(@article.created_at) %> ago
+      </div>
+    </p>
+  </div>
+</div>
