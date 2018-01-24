@@ -29,14 +29,33 @@ class ArticlesTest < ActionDispatch::IntegrationTest
     assert_match @article.name, response.body
     assert_match @article.description, response.body
     assert_match @player.playername, response.body
+    assert_select 'a[href=?]', edit_article_path(@article), text: "Edit this article"
+    assert_select 'a[href=?]', article_path(@article), text: "Delete this article"
+    assert_select 'a[href=?]', articles_path, text: "Return to articles listing"
   end
   
   test "create new valid article" do
     get new_article_path
+    assert_template 'articles/new'
+    name_of_article = "article"
+    description_of_article = "awesome description"
+    assert_difference 'Article.count', 1 do
+      post articles_path, params: { article: { name: name_of_article, description: description_of_article}}
+    end
+    follow_redirect!
+    assert_match name_of_article.capitalize, response.body
+    assert_match description_of_article, response.body
   end
   
   test "reject invalid article submissions" do
     get new_article_path
+    assert_template 'articles/new'
+    assert_no_difference 'Article.count' do
+      post articles_path, params: { article: { name: " ", description: " " } }
+    end
+    assert_template 'articles/new'
+    assert_select 'h2.panel-title'
+    assert_select 'div.panel-body'
   end
   
 end
