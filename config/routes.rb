@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   
   resources :articles
   
+  get '/signup', to: 'players#new'
+  resources :players, except: [:new]
 end

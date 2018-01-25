@@ -1,0 +1,16 @@
+<%= render 'shared/page_title', title: "Player #{@player.playername}'s profile" %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <%= gravatar_for @player, size: 150 %>
+  </div>
+</div>
+
+<h4 align="center"><%= @player.playername %>'s articles</h4>
+
+<div align="center">
+  <%= will_paginate @player_articles %>
+</div>
+<%= render 'articles/article', obj: @player_articles %>
+<div align="center">
+  <%= will_paginate @player_articles %>
+</div>

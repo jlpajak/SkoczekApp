@@ -7,4 +7,6 @@ class Article < ApplicationRecord
   
   validates :player_id, presence: true
   
+  default_scope -> { order(updated_at: :desc) }
+  
 end

@@ -3,7 +3,7 @@ require 'test_helper'
 class ArticleTest < ActiveSupport::TestCase
   
   def setup
-    @player = Player.create!(playername: "kuba", email: "kuba@example.com")
+    @player = Player.new(playername: "kuba", email: "kuba@example.com", password: "password", password_confirmation: "password")
     @article = @player.articles.build(name: "some name", description: "some description")  
   end
   

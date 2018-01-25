@@ -3,7 +3,7 @@ require 'test_helper'
 class ArticlesEditTest < ActionDispatch::IntegrationTest
   
   def setup
-    @player = Player.create!(playername: "kuba", email: "kuba@example.com")
+    @player = Player.new(playername: "kuba", email: "kuba@example.com", password: "password", password_confirmation: "password")
     @article = Article.create(name: "name", description: "description", player: @player)
   end
 
