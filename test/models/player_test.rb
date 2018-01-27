@@ -70,4 +70,13 @@ class PlayerTest < ActiveSupport::TestCase
     assert_not @player.valid?
   end
   
+  test "associated articles should be destroyed" do
+    @player.save
+    @player.articles.create!(name: "testing delete", 
+                    description "testing delete function")
+    assert_difference 'Article.count', -1 do
+      @player.destroy
+    end
+  end
+  
 end

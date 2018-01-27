@@ -8,6 +8,7 @@ class ArticlesEditTest < ActionDispatch::IntegrationTest
   end
 
   test "reject invalid article update" do
+    sign_in_as(@player, "password")
     get edit_article_path(@article)
     assert_template 'articles/edit'
     patch article_path(@article), params: { article: { name: " ", description: "some description" } } 
@@ -17,6 +18,7 @@ class ArticlesEditTest < ActionDispatch::IntegrationTest
   end
   
   test "successfully edit a article" do
+    sign_in_as(@player, "password")
     get edit_article_path(@article)
     assert_template 'articles/edit'
     updated_name = "updated name"

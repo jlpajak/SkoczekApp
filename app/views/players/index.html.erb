@@ -11,6 +11,9 @@
                                          player_path(player) %></li>
     <li><small><%= pluralize(player.articles.count, "article") if player.articles %>
             </small></li>
+          <% if logged_in? and current_player.admin? && !player.admin %>
+            <li><%= link_to "Delete this player", player_path(player), method: :delete, data: {confirm: "Are you sure you want to delete this player and all associated articles?"} %></li>
+          <% end %>
         </div>
       </div>
     </ul>      

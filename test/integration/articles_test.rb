@@ -24,6 +24,7 @@ class ArticlesTest < ActionDispatch::IntegrationTest
   end
   
   test "should get articles show" do
+    sign_in_as(@player, "password")
     get article_path(@article)
     assert_template 'articles/show'
     assert_match @article.name, response.body
@@ -35,6 +36,7 @@ class ArticlesTest < ActionDispatch::IntegrationTest
   end
   
   test "create new valid article" do
+    sign_in_as(@player, "password")
     get new_article_path
     assert_template 'articles/new'
     name_of_article = "article"
@@ -48,6 +50,7 @@ class ArticlesTest < ActionDispatch::IntegrationTest
   end
   
   test "reject invalid article submissions" do
+    sign_in_as(@player, "password")
     get new_article_path
     assert_template 'articles/new'
     assert_no_difference 'Article.count' do

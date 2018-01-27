@@ -8,6 +8,7 @@ class ArticlesDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test "successfully delete a article" do
+    sign_in_as(@player, "password")
     get article_path(@article)
     assert_template 'articles/show'
     assert_select 'a[href=?]', article_path(@article), text: "Delete this article"

@@ -8,7 +8,7 @@ class Player < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   
-  has_many :articles
+  has_many :articles, dependent: :destroy
   has_secure_password
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
 
