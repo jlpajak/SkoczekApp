@@ -5,12 +5,15 @@
   <hr />
   <%= simple_format(@article.description) %>
   <hr />
+  <% if @article.tags.any? %>
+    <p>Tags: <%= render @article.tags %></p>
+  <% end %>
   <div class="pull-right">
     <p class="center">
       <em>Created by:</em>
     </p>
     <p class="center">
-      <%= link_to gravatar_for(@article.player), articles_path %>
+      <%= link_to gravatar_for(@article.player), player_path(@article.player) %>
     </p>
     <p class="center">
       <small><%= @article.player.playername %></small>

@@ -8,13 +8,16 @@
     <div class="col-md-8 well">
       <h4><%= link_to article.name, article.path(article) %></h4>
       <p><%= truncate(article.description, length: 150) %></p>
+      <% if aritcle.tags.any? %>
+        <p>Tags: <%= render aritcle.tags %></p>
+      <% end %>
       <p>
-        <span class="quiet"><small>Created <%= time_ago_in_words(article.created_at) %> ago</small></span>
+        <span class="quiet"><small>Created <%= time_ago_in_words(article.created_at) %> ago by <%= article.player.playername.capitalize %></small></span>
       </p> 
       <% if logged_in? && (current_player == article.player || !current_player.admin?) %>
         <div class="article-actions">
           <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-warning" %>
-          <%= link_to "Delete this article", article_path(article), method: :delete, data: { confirm: "Are you sure you want to delete this articlee?" }, class: "btn btn-xs btn-danger" %>
+          <%= link_to "Delete this article", article_path(article), method: :delete, data: { confirm: "Are you sure you want to delete this article?" }, class: "btn btn-xs btn-danger" %>
         </div>
       <% end %>
     </div>

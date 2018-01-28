@@ -5,12 +5,16 @@
   </div>
 </div>
 
-<h4 align="center"><%= @player.playername %>'s articles</h4>
+<% if @player.articles.count != 0 %>
+  <h4 align="center"><%= @player.playername %>'s articles</h4>
 
-<div align="center">
-  <%= will_paginate @player_articles %>
-</div>
-<%= render 'articles/article', obj: @player_articles %>
-<div align="center">
-  <%= will_paginate @player_articles %>
-</div>
+  <div align="center">
+    <%= will_paginate @player_articles %>
+  </div>
+  <%= render 'articles/article', obj: @player_articles %>
+  <div align="center">
+    <%= will_paginate @player_articles %>
+  </div>
+<% else %>
+  <h4 align="center">No articles yet!</h4>
+<% end %>

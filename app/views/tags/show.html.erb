@@ -1,0 +1,13 @@
+<%= render 'shared/page_title', title: "#{@tag.name}" %>
+<% if @tag.articles.count != 0 %>
+  <h4 align="center">Articles containing <%= @tag.name %></h4>
+  <div align="center">
+    <%= will_paginate @tag_articles %>
+  </div>
+  <%= render 'articles/article', obj: @tag_articles %>
+  <div align="center">
+    <%= will_paginate @tag_articles %>
+  </div>
+<% else %>
+  <h4 align="center">No articles yet!</h4>
+<% end %>
