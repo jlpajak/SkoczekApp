@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127012859) do
+ActiveRecord::Schema.define(version: 20180128004029) do
+
+  create_table "article_tags", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +25,12 @@ ActiveRecord::Schema.define(version: 20180127012859) do
     t.integer  "player_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text    "description"
+    t.integer "player_id"
+    t.integer "article_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string   "playername"
     t.string   "email"
@@ -27,6 +38,10 @@ ActiveRecord::Schema.define(version: 20180127012859) do
     t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.boolean  "admin",           default: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
   end
 
 end
