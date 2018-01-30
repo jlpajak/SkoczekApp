@@ -21,7 +21,7 @@ class PlayersLoginTest < ActionDispatch::IntegrationTest
   test "valid login credentials accepted and begin session" do
     get login_path
     assert_template 'sessions/new'
-    post login_path, params: { session: { email: @player.email, password: player.password } }
+    post login_path, params: { session: { email: @player.email, password: @player.password } }
     assert_redirected_to @player
     follow_redirect!
     assert_template 'players/show'

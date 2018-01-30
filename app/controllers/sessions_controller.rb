@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   
   def new
-  # will simply render the form
+    
   end
 
   def create
@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
       flash.now[:danger] = "There was something wrong with your login information"
       render 'new'
     end
-  end
   end
 
   def destroy

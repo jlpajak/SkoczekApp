@@ -14,7 +14,7 @@ class PlayersEditTest < ActionDispatch::IntegrationTest
   test "reject an invalid edit" do
     sign_in_as(@player, "password")
     get edit_player_path(@player)
-    assert_template 'chefs/edit'
+    assert_template 'players/edit'
     patch player_path(@player), params: { player: { playername: " ", email: "kuba@example.com" } }
     assert_template 'players/edit'
     assert_select 'h2.panel-title'

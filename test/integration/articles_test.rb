@@ -19,8 +19,8 @@ class ArticlesTest < ActionDispatch::IntegrationTest
     assert_template 'articles/index'
     assert_match @article.name, response.body
     assert_match @article2.name, response.body
-    assert_select "a[href=?]", article_path(@recipe), text: @article.name
-    assert_select "a[href=?]", article_path(@recipe2), text: @article2.name
+    assert_select "a[href=?]", article_path(@article), text: @article.name
+    assert_select "a[href=?]", article_path(@article2), text: @article2.name
   end
   
   test "should get articles show" do

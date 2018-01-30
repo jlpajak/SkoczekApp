@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
   belongs_to :article 
   validates :player_id, presence: true
   validates :article_id, presence: true
-  default_scope -> { order(updated_at: :desc)}
+  #default_scope -> { order(updated_at: :desc)}
 end

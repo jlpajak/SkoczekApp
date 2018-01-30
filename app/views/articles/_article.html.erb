@@ -1,4 +1,4 @@
-<% @obj.each do |article| %>
+<% obj.each do |article| %>
   <div class="row">
     <div class="col-md-2">
       <section class="player_info center">
@@ -6,9 +6,9 @@
       </section>
     </div>
     <div class="col-md-8 well">
-      <h4><%= link_to article.name, article.path(article) %></h4>
+      <h4><%= link_to article.name, article_path(article) %></h4>
       <p><%= truncate(article.description, length: 150) %></p>
-      <% if aritcle.tags.any? %>
+      <% if article.tags.any? %>
         <p>Tags: <%= render aritcle.tags %></p>
       <% end %>
       <p>
