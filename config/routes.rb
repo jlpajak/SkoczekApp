@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root "pages#home"
   get 'pages/home', to: 'pages#home'
   
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:create]
+  end
   
   get '/signup', to: 'players#new'
   resources :players, except: [:new]
