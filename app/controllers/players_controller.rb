@@ -16,6 +16,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     if @player.save
       session[:player_id] = @player.id
+      cookies.signed[:player_id] = @player.id
       flash[:success] = "Welcome #{@player.playername} to STW App!"
       redirect_to player_path(@player)
     else
