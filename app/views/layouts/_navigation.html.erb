@@ -17,6 +17,7 @@
         <li><%= link_to "Players", players_path %></li>
         <li><%= link_to "All Articles", articles_path %></li>
         <% if logged_in? %>
+          <li><%= link_to "Chat", chat_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Articles<span class="caret"></span></a>
             <ul class="dropdown-menu">
