@@ -32,9 +32,4 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not @article.valid?
   end
   
-  test "description shouldn't be more than 5000 characters" do
-    @article.description = "a" * 5001
-    assert_not @article.valid?
-  end
-  
 end
