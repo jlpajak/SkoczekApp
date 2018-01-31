@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   
   resources :articles do
     resources :comments, only: [:create]
+    member do 
+      post 'like'
+    end
   end
   
   get '/signup', to: 'players#new'

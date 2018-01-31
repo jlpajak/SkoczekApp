@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
   
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:index, :show]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :like]
+  before_action :require_user, except: [:index, :show, :like]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_user_like, only: [:like]
 
   def index
      @articles = Article.paginate(page: params[:page], per_page: 5)
@@ -46,6 +47,17 @@ class ArticlesController < ApplicationController
     flash[:success] = "Article deleted successfully"
     redirect_to articles_path
   end
+  
+  def like
+    like = Like.create(like: params[:like], player: current_player, article: @article)
+    if like.valid?
+      flash[:success] = "Your selection was succesful"
+      redirect_to :back
+    else
+      flash[:danger] = "You can only like/dislike a article once"
+      redirect_to :back
+    end
+  end
 
   private
   
@@ -62,6 +74,13 @@ class ArticlesController < ApplicationController
         flash[:danger] = "You can only edit or delete your own articles"
         redirect_to articles_path
       end  
+    end
+  
+    def require_user_like
+      if !logged_in?
+        flash[:danger] = "You must be logged in to perform that action"
+        redirect_to :back
+      end
     end
 
 end
