@@ -50,7 +50,7 @@ class PlayersEditTest < ActionDispatch::IntegrationTest
     updated_name = "joe"
     updated_email = "joe@example.com"
     patch player_path(@player), params: { player: { playername: updated_name, email: updated_email } }
-    assert_redirected_to chefs_path
+    assert_redirected_to articles_path
     assert_not flash.empty?
     @player.reload
     assert_match "kuba", @player.playername

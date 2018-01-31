@@ -4,6 +4,7 @@ class ArticleTest < ActiveSupport::TestCase
   
   def setup
     @player = Player.new(playername: "kuba", email: "kuba@example.com", password: "password", password_confirmation: "password")
+    @player.save
     @article = @player.articles.build(name: "some name", description: "some description")  
   end
   

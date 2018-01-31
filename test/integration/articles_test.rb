@@ -4,7 +4,8 @@ class ArticlesTest < ActionDispatch::IntegrationTest
   
   def setup
     @player = Player.new(playername: "kuba", email: "kuba@example.com", password: "password", password_confirmation: "password")
-    @article = Article.create(name: "some name", description: "some description", player: @player)
+    @player.save
+    @article = Article.create!(name: "some name", description: "some description", player: @player)
     @article2 = @player.articles.build(name: "other name", description: "other description")
     @article2.save
   end
@@ -27,7 +28,7 @@ class ArticlesTest < ActionDispatch::IntegrationTest
     sign_in_as(@player, "password")
     get article_path(@article)
     assert_template 'articles/show'
-    assert_match @article.name, response.body
+    assert_match @article.name.capitalize, response.body
     assert_match @article.description, response.body
     assert_match @player.playername, response.body
     assert_select 'a[href=?]', edit_article_path(@article), text: "Edit this article"

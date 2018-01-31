@@ -4,7 +4,8 @@ class ArticlesDeleteTest < ActionDispatch::IntegrationTest
   
   def setup
     @player = Player.new(playername: "kuba", email: "kuba@example.com", password: "password", password_confirmation: "password")
-    @article = Article.create(name: "some name", description: "some description", player: @player)
+    @player.save
+    @article = Article.create!(name: "some name", description: "some description", player: @player)
   end
 
   test "successfully delete a article" do

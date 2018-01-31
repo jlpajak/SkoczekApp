@@ -44,6 +44,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   #testing gem
   gem 'rails-controller-testing'
+  gem 'capybara', '~> 2.13'
+  gem 'selenium-webdriver'
+  gem 'minitest','~> 5.10.3'
 end
 
 group :development do

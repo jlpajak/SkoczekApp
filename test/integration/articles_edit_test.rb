@@ -4,7 +4,8 @@ class ArticlesEditTest < ActionDispatch::IntegrationTest
   
   def setup
     @player = Player.new(playername: "kuba", email: "kuba@example.com", password: "password", password_confirmation: "password")
-    @article = Article.create(name: "name", description: "description", player: @player)
+    @player.save
+    @article = Article.create!(name: "name", description: "description", player: @player)
   end
 
   test "reject invalid article update" do
