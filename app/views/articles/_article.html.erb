@@ -31,5 +31,8 @@
         </div>
       </div>
     </div>
+    <div align="center">
+      <%= image_tag @article.image.url if @article.image? %>
+    </div>
   </div>
 <% end %>
