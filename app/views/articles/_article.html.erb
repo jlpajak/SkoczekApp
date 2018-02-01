@@ -31,8 +31,8 @@
         </div>
       </div>
     </div>
-    <div align="center">
-      <%= image_tag @article.image.url if @article.image? %>
+    <div class="col-md-2">
+      <%= image_tag(article.image.url, size: "150x100") if article.image? %>
     </div>
   </div>
 <% end %>
