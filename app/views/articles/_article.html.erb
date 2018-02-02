@@ -12,7 +12,7 @@
         <p>Tags: <%= render article.tags %></p>
       <% end %>
       <p>
-        <span class="quiet"><small>Created <%= time_ago_in_words(article.created_at) %> ago by <%= article.player.playername.capitalize %> | <%= pluralize(article.comments.count, 'Comment') %></small></span>
+        <span class="quiet"><small>Created <%= time_ago_in_words(article.created_at) %> ago by <%= article.player.playername %> | <%= pluralize(article.comments.count, 'Comment') %></small></span>
       </p> 
       <% if logged_in? && (current_player == article.player || !current_player.admin?) %>
         <div class="article-actions">
