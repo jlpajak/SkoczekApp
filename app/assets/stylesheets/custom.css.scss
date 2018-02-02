@@ -172,6 +172,10 @@ footer ul li {
   background: #0b6022;
 }
 
+.grav-sm {
+  display:none;
+}
+
 @media (max-width: 991px) {
   .navbar-header {
       float: none;
@@ -206,5 +210,20 @@ footer ul li {
   }
   .collapse.in{
       display:block !important;
+  }
+  .grav-md {
+    display:none;
+  }
+  .grav-sm {
+    display:block;
+  }
+}
+
+@media (max-width: 768px) {
+  .grav {
+    display: none;
+  }
+  .img {
+    display: none;
   }
 }
